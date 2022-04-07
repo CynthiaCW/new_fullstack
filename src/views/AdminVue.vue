@@ -21,7 +21,7 @@
                     <p>{{ record.description }}</p>
                 </div>
                 <button class="btn" methods="PUT" href>Modifier un vinyl</button>
-                <button class="btn" methods="DELETE" href>Supprimer un vinyl</button>
+                <button class="btn"  @click="deleteVinyl(record.id)">Supprimer un vinyl</button>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
 import axios from 'axios'
 import NavBar from "@/components/NavBar.vue";
 const API = 'http://localhost:8000/read.php'
-
+const API_DELETE = 'http://localhost:8000/delete.php'
 export default {
     name: 'AdminVue',
     components: {
@@ -44,6 +44,22 @@ export default {
     async created() {
         const vinyls = await axios.get(API);
         this.vinyls = vinyls.data;
+    },
+    methods:{
+        deleteVinyl(recordId){
+            if(axios({
+                method: 'post',
+                url : API_DELETE,
+                data:{
+                    id : recordId
+                }
+            })){
+                console.log('ok')
+            }else{
+                console.log('fuck')
+            }
+            
+        }
     }
 
 

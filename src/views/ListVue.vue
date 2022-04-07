@@ -1,19 +1,20 @@
 <template>
     <div>
-        <div class="courses-container" v-for="record in vinyls" :key="record.id">
+        <div class="courses-container">
             <h1>Découvrez nos vinyls</h1>
-            <div class="course">
-                <div class="course-preview" :style="{ backgroundColor: cardColor }">
+            <div class="course" v-for="record in vinyls" :key="record.id">
+                <div class="course-preview">
                     <slot>
-                        <h2>En stock</h2>
+                        <h2 style="color:black">{{(record.available==1)?'✅':'❌'}}</h2>
                         <img class="main-image" :src="record.picture_link" height="200px" href="#" />
                     </slot>
                 </div>
-                <div class="course-info">
+                <div class="course-info" >
+                    
                     <h6>{{ record.band }}</h6>
-                    <h2>Titre du vinyls{{ record.title }}</h2>
+                    <h2>{{ record.title }}</h2>
 
-                    <button class="btn" @click="selectCourse" href="#VinylsDetails.html">Voir</button>
+                    <button class="btn">Voir</button>
                 </div>
             </div>
         </div>

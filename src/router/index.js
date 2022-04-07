@@ -27,6 +27,11 @@ const routes = [
     path:'/admin',
     name:'admin',
     component:() => import('../views/AdminVue.vue')
+  },
+  {
+    path:'/admin/create',
+    name:'create',
+    component:() =>import('../components/FormulaireAdmin.vue')
   }
 ]
 

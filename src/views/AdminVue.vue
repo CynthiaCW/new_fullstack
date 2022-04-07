@@ -4,7 +4,7 @@
 
         <div class="courses-container">
             <h1>Découvrez nos vinyls</h1>
-            <button class="btn" methods="GET" href>Ajouter un vinyl</button>
+            <button class="btn" methods="PUT" @click="createVinyl">Inserer un vinyl</button>
             <div class="course" v-for="record in vinyls" :key="record.id">
                 <div class="course-preview">
                     <slot>
@@ -20,8 +20,8 @@
 
                     <p>{{ record.description }}</p>
                 </div>
-                <button class="btn" methods="PUT" href>Modifier un vinyl</button>
-                <button class="btn"  @click="deleteVinyl(record.id)">Supprimer un vinyl</button>
+                <button class="btn">Modifier un vinyl</button>
+                <button class="btn" @click="deleteVinyl(record.id)">Supprimer un vinyl</button>
             </div>
         </div>
     </div>
@@ -45,27 +45,26 @@ export default {
         const vinyls = await axios.get(API);
         this.vinyls = vinyls.data;
     },
-    methods:{
-        deleteVinyl(recordId){
-            if(axios({
+    methods: {
+        deleteVinyl(recordId) {
+            if (axios({
                 method: 'post',
-                url : API_DELETE,
-                data:{
-                    id : recordId
+                url: API_DELETE,
+                data: {
+                    id: recordId
                 }
-            })){
+            })) {
                 console.log('ok')
-            }else{
+            } else {
                 console.log('fuck')
             }
-            
+
+        },
+        createVinyl(){
+            this.$router.push({ name: "create"})
         }
+
     }
-
-
-
-
-
 }
 
 </script>

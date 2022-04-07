@@ -6,15 +6,15 @@
         <!-- todo src -->
 
         <li class="nav-item active">
-        <a class="nav-link" href="">Home</a>
+        <a class="nav-link" href="HomeView.vue">Home</a>
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="">Se connecter</a>
+        <a class="nav-link" href="FormulaireAdmin.vue">Se connecter</a>
       </li>
       
       <li class="nav-item active">
-        <a class="nav-link" href="">Nos Vinyls</a>
+        <a class="nav-link" href="ListVue.vue">Nos Vinyls</a>
       </li>
 
       

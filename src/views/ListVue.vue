@@ -5,7 +5,7 @@
             <div class="course" v-for="record in vinyls" :key="record.id">
                 <div class="course-preview">
                     <slot>
-                        <h2 style="color:black">{{(record.available==1)?'✅':'❌'}}</h2>
+                        <h2 style="color:black">{{(record.available==1)?'✔':'❌'}}</h2>
                         <img class="main-image" :src="record.picture_link" height="200px" href="#" />
                     </slot>
                 </div>

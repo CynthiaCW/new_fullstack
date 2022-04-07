@@ -22,6 +22,11 @@ const routes = [
     path: '/vinyls/:recordId',
     name: 'recordDetails',
     component: () => import('../views/DetailVue.vue')
+  },
+  {
+    path:'/admin',
+    name:'admin',
+    component:() => import('../views/AdminVue.vue')
   }
 ]
 

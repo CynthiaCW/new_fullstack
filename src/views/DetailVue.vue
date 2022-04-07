@@ -3,22 +3,22 @@
         <div class="courses-container">
             <h1>Découvrez nos vinyls</h1>
             <div class="course">
-                <h3>(En stock)</h3>
+                <h3>{{(record.available===true)?'✔':'❌'}}</h3>
 
                 <div class="course-preview">
                     <slot>
-                        <h6>Course par défaut</h6>
-                        <h2>En stock</h2>
-                        <img class="main-image" src height="200px" href="#" />
+                        <h6></h6>
+                        <h2></h2>
+                        <img class="main-image" :src="record.picture_link" height="200px" href="#" />
                     </slot>
                 </div>
                 <div class="course-info">
-                    <h6>Nom du groupe</h6>
-                    <h6>Year</h6>
-                    <h6>Genre</h6>
-                    <h2>Titre du vinyls</h2>
+                    <h6>{{record.band}}</h6>
+                    <h6>{{record.year_release}}</h6>
+                    <h6>{{record.genre}}</h6>
+                    <h2>{{record.title}}</h2>
 
-                    <p>Description</p>
+                    <p>{{record.description}}</p>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
 
 <script>
 import axios from 'axios'
-const API = 'https://localhost:8000/read.php'
+const API = 'http://localhost:8000/single_read.php/?id='
 
 export default {
 
@@ -39,6 +39,7 @@ export default {
         const { recordId } = this.$route.params
         const apiDetailsUri = API + recordId
         const oneRecord = await axios.get(apiDetailsUri)
+        console.log(oneRecord)
         this.record = oneRecord.data
     }
 

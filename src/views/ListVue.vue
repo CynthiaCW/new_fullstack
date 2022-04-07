@@ -1,5 +1,7 @@
 <template>
+    
     <div>
+        <NavBar/>
         <div class="courses-container">
             <h1>Découvrez nos vinyls</h1>
             <div class="course" v-for="record in vinyls" :key="record.id">
@@ -25,20 +27,24 @@
 
 <script>
 import axios from 'axios'
+import NavBar from '../components/NavBar.vue'
 const API = 'http://localhost:8000/read.php'
 
 export default {
-    name: 'ListVue',
+    components:{
+        NavBar
+    },
+    name: "ListVue",
     data: () => ({
         vinyls: []
     }),
     async created() {
-        const vinyls = await axios.get(API)
-        this.vinyls = vinyls.data
+        const vinyls = await axios.get(API);
+        this.vinyls = vinyls.data;
     },
-    methods:{
-        showVinylDetails(recordId){
-            this.$router.push({name:'recordDetails', params:{recordId: recordId}})
+    methods: {
+        showVinylDetails(recordId) {
+            this.$router.push({ name: "recordDetails", params: { recordId: recordId } });
         }
     }
 }

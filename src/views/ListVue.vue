@@ -14,7 +14,7 @@
                     <h6>{{ record.band }}</h6>
                     <h2>{{ record.title }}</h2>
 
-                    <button class="btn">Voir</button>
+                    <button class="btn" @click="showVinylDetails(record.id)">Voir</button>
                 </div>
             </div>
         </div>
@@ -35,6 +35,11 @@ export default {
     async created() {
         const vinyls = await axios.get(API)
         this.vinyls = vinyls.data
+    },
+    methods:{
+        showVinylDetails(recordId){
+            this.$router.push({name:'recordDetails', params:{recordId: recordId}})
+        }
     }
 }
 

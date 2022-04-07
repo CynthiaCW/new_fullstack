@@ -1,12 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div>
-        <nav class="navbar">
-   
-    <ul>
-      <img class="navbar-brand" src="static/img/logo.png" height='100px'>
-
-=======
       <nav class="navbar">
    
     <ul>
@@ -16,7 +8,6 @@
         <li class="nav-item active">
         <a class="nav-link" href="">Home</a>
       </li>
->>>>>>> front
 
       <li class="nav-item active">
         <a class="nav-link" href="">Se connecter</a>
@@ -31,11 +22,6 @@
     </ul>
   </nav>
 
-<<<<<<< HEAD
-  <p>Decouvrer nos vinyls</p>
-    </div>
-</template>
-=======
 </template>
 
 <style scoped>
@@ -82,4 +68,3 @@ ul>li>a:hover {
 /*---------------------------*/
 
 </style>
->>>>>>> front

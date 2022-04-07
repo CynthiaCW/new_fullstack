@@ -23,8 +23,11 @@
 
 .courses-container h1 {
 	align-items: flex-start;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> front
 }
 
 .course h6 {
@@ -61,7 +64,13 @@
 	width: 100%;
 }
 
+<<<<<<< HEAD
 
+=======
+.p {
+    color: #616161;
+}
+>>>>>>> front
 
 .btn {
 	background-color: #7B6DED;

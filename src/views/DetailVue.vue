@@ -1,5 +1,7 @@
 <template>
     <div>
+
+       
         <div class="courses-container">
             <h1>Découvrez nos vinyls</h1>
             <div class="course">
@@ -39,7 +41,6 @@ export default {
         const { recordId } = this.$route.params
         const apiDetailsUri = API + recordId
         const oneRecord = await axios.get(apiDetailsUri)
-        console.log(oneRecord)
         this.record = oneRecord.data
     }
 

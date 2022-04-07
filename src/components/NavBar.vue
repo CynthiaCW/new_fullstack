@@ -1,12 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div>
-        <nav class="navbar">
-   
-    <ul>
-      <img class="navbar-brand" src="static/img/logo.png" height='100px'>
-
-=======
       <nav class="navbar">
    
     <ul>
@@ -14,28 +6,21 @@
         <!-- todo src -->
 
         <li class="nav-item active">
-        <a class="nav-link" href="">Home</a>
+        <a class="nav-link" href="HomeView.vue">Home</a>
       </li>
->>>>>>> front
 
       <li class="nav-item active">
-        <a class="nav-link" href="">Se connecter</a>
+        <a class="nav-link" href="FormulaireAdmin.vue">Se connecter</a>
       </li>
       
       <li class="nav-item active">
-        <a class="nav-link" href="">Nos Vinyls</a>
+        <a class="nav-link" href="ListVue.vue">Nos Vinyls</a>
       </li>
 
       
 
     </ul>
   </nav>
-
-<<<<<<< HEAD
-  <p>Decouvrer nos vinyls</p>
-    </div>
-</template>
-=======
 </template>
 
 <style scoped>
@@ -82,4 +67,3 @@ ul>li>a:hover {
 /*---------------------------*/
 
 </style>
->>>>>>> front

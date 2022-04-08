@@ -30,7 +30,7 @@
 
 <script>
 import axios from 'axios'
-import NavBar from "@/components/NavBar.vue";
+import NavBar from "../components/NavBar.vue";
 const API = 'http://localhost:8000/read.php'
 const API_DELETE = 'http://localhost:8000/delete.php'
 export default {
@@ -68,3 +68,4 @@ export default {
 }
 
 </script>
+

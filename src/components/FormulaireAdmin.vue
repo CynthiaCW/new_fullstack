@@ -2,40 +2,60 @@
     <div>
         <form v-on:submit.prevent="submitForm">
             <h1>Ajouter un vinyls</h1>
-
             <div class="champs">
-                <label for="text">Nom du groupe</label>
-                <input type="text" id="name" name="band" required v-model="form.band" />
+                <label for="pic">Lien URL image</label>
+                <input type="text" name="picture_link" id="pic" required v-model="form.picture_link" />
             </div>
 
             <div class="champs">
-                <label for="text">Année</label>
-                <input type="text" id="start" name="year" placeholder="2022-07-22" required v-model="form.year"/>
+                <label for="title">Nom du vinyl</label>
+                <input type="text" id="title" name="title" required v-model="form.title" />
+            </div>
+            <div class="champs">
+                <label for="band">Nom du groupe</label>
+                <input type="text" id="band" name="band" required v-model="form.band" />
+            </div>
+            <div class="champs">
+                <label for="year">Année</label>
+                <input
+                    type="text"
+                    id="year"
+                    name="release_year"
+                    placeholder="2022/07/22"
+                    required
+                    v-model="form.release_year"
+                />
             </div>
 
             <div class="champs">
-                <label for="text">Genre</label>
-                <input type="text" id="name" name="genre" required v-model="form.genre"/>
+                <label for="genre">Genre</label>
+                <input type="text" id="genre" name="genre" required v-model="form.genre" />
             </div>
 
             <div class="champs">
-                <label for="text">Description</label>
-                <input type="text" id="name" name="description" v-model="form.description"/>
-            </div>
-
-            <div class="champs">
-                <label for="text">Lien URL image</label>
-                <input type="text" name="url" id="pic" required v-model="form.pic"/>
+                <label for="description">Description</label>
+                <textarea
+                    name="description"
+                    id="descriprion"
+                    cols="30"
+                    rows="10"
+                    v-model="form.description"
+                />
             </div>
 
             <div class="champs">
                 <label for="checkbox">En stock</label>
-                <input type="checkbox" name="si" value="1" v-model="form.si"/>
-                <input type="checkbox" name="no"  value="0" v-model="form.no"/>
+                <input
+                    type="checkbox"
+                    name="available"
+                    checked="false"
+                    value="1"
+                    v-model="form.available"
+                />
             </div>
 
             <div class="btnCentrer">
-                <button class="btn" methods="POST"  @click="submitForm">Creer un vinyls</button>
+                <button class="btn">Creer un vinyl</button>
             </div>
         </form>
     </div>
@@ -47,23 +67,24 @@ const API_CREATE = 'http://localhost:8000/create.php'
 
 export default {
     name: 'FormulaireAdmin',
-    data() {
-        return {
-            form: {
-                picture: '',
-                title: '',
-                band: '',
-                date: '',
-                genre: '',
-                description: '',
-                available: ''
-            }
+    data: () => ({
+
+        form: {
+            picture_link: '',
+            title: '',
+            band: '',
+            release_year: '',
+            genre: '',
+            description: '',
+            available: ''
         }
-    },
+    }
+    ),
     methods: {
-        submitForm() {
-            if (axios.put(API_CREATE, this.form)) {
-                console.log('ok')
+        async submitForm() {
+            if (await axios.post(API_CREATE, this.form)) {
+                this.$router.push({ name: 'admin' })
+                console.log(this.form)
             } else {
                 console.log('fuck')
             }

@@ -1,41 +1,41 @@
 <template>
     <div>
-        <form action method="post">
+        <form v-on:submit.prevent="submitForm">
             <h1>Ajouter un vinyls</h1>
 
             <div class="champs">
                 <label for="text">Nom du groupe</label>
-                <input type="text" id="name" name="band" required />
+                <input type="text" id="name" name="band" required v-model="form.band" />
             </div>
 
             <div class="champs">
                 <label for="text">Année</label>
-                <input type="text" id="start" name="year" placeholder="2022-07-22" required />
+                <input type="text" id="start" name="year" placeholder="2022-07-22" required v-model="form.year"/>
             </div>
 
             <div class="champs">
                 <label for="text">Genre</label>
-                <input type="text" id="name" name="genre" required />
+                <input type="text" id="name" name="genre" required v-model="form.genre"/>
             </div>
 
             <div class="champs">
                 <label for="text">Description</label>
-                <input type="text" id="name" name="description" />
+                <input type="text" id="name" name="description" v-model="form.description"/>
             </div>
 
             <div class="champs">
                 <label for="text">Lien URL image</label>
-                <input type="text" name="url" id="pic" required />
+                <input type="text" name="url" id="pic" required v-model="form.pic"/>
             </div>
 
             <div class="champs">
                 <label for="checkbox">En stock</label>
-                <input type="checkbox" name="si" value="1"/>
-                <input type="checkbox" name="no"  value="0"/>
+                <input type="checkbox" name="si" value="1" v-model="form.si"/>
+                <input type="checkbox" name="no"  value="0" v-model="form.no"/>
             </div>
 
             <div class="btnCentrer">
-                <button class="btn" methods="POST" type="submit" @click="submitForm">Creer un vinyls</button>
+                <button class="btn" methods="POST"  @click="submitForm">Creer un vinyls</button>
             </div>
         </form>
     </div>
@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         submitForm() {
-            if (axios.post(API_CREATE, this.form)) {
+            if (axios.put(API_CREATE, this.form)) {
                 console.log('ok')
             } else {
                 console.log('fuck')

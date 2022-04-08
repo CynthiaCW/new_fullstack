@@ -28,35 +28,44 @@ export default{
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 .navbar {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   background-color: rgb(34, 34, 34);
   margin: 15px;
-  height: 100%;
+  height: 95%;
   width: 400px;
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
   border-radius: 25px;
-  border: #7b6ded;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(105, 102, 252, 0.842) 2px 3px 8px;
+}
+
+.navbar:hover {
+  border: 2px #7b6ded;;
 }
 
 ul {
-  padding-left: 40px;
+  padding: 0;
+  align-content: center;
 }
 
 ul > li {
   text-decoration: none;
   list-style-type: none;
-  padding: 40px;
+  padding-bottom: 80px;
   display: block;
 }
 ul > li > a {
   text-decoration: none;
-  font-family: "Poppins";
+  font-family: 'Muli', sans-serif;
+  font-weight: 600;
   font-size: 1.5rem;
   color: white;
 }
@@ -64,6 +73,4 @@ ul > li > a {
 ul > li > a:hover {
   color: #7b6ded;
 }
-
-/*---------------------------*/
 </style>

@@ -46,7 +46,7 @@ export default {
         this.vinyls = vinyls.data;
     },
     methods: {
-        deleteVinyl(recordId) {
+        async deleteVinyl(recordId) {
             if (axios({
                 method: 'post',
                 url: API_DELETE,
@@ -55,13 +55,15 @@ export default {
                 }
             })) {
                 console.log('ok')
+
             } else {
                 console.log('fuck')
             }
-
+            await axios.get(API)
+            this.$router.go()
         },
-        createVinyl(){
-            this.$router.push({ name: "create"})
+        createVinyl() {
+            this.$router.push({ name: "create" })
         }
 
     }

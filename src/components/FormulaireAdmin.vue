@@ -4,7 +4,13 @@
             <h1>Ajouter un vinyls</h1>
             <div class="champs">
                 <label for="pic">Lien URL image</label>
-                <input type="text" name="picture_link" id="pic" required v-model="form.picture_link" />
+                <input
+                    type="text"
+                    name="picture_link"
+                    id="pic"
+                    required
+                    v-model="form.picture_link"
+                />
             </div>
 
             <div class="champs">
@@ -18,12 +24,11 @@
             <div class="champs">
                 <label for="year">Année</label>
                 <input
-                    type="text"
+                    type="date"
                     id="year"
-                    name="release_year"
-                    placeholder="2022/07/22"
+                    name="year_release"
                     required
-                    v-model="form.release_year"
+                    v-model="form.year_release"
                 />
             </div>
 
@@ -36,7 +41,7 @@
                 <label for="description">Description</label>
                 <textarea
                     name="description"
-                    id="descriprion"
+                    id="description"
                     cols="30"
                     rows="10"
                     v-model="form.description"
@@ -45,13 +50,7 @@
 
             <div class="champs">
                 <label for="checkbox">En stock</label>
-                <input
-                    type="checkbox"
-                    name="available"
-                    checked="false"
-                    value="1"
-                    v-model="form.available"
-                />
+                <input type="checkbox" name="available" v-model="form.available" />
             </div>
 
             <div class="btnCentrer">
@@ -78,11 +77,10 @@ export default {
             description: '',
             available: ''
         }
-    }
-    ),
+    }),
     methods: {
         async submitForm() {
-            if (await axios.post(API_CREATE, this.form)) {
+                if (await axios.post(API_CREATE, this.form)) {
                 this.$router.push({ name: 'admin' })
                 console.log(this.form)
             } else {

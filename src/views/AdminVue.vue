@@ -20,11 +20,10 @@
 
                     <p>{{ record.description }}</p>
                 </div>
-                <button class="btn">Modifier un vinyl</button>
+                <button class="btn" @click="updateVinyl(record.id)">Modifier un vinyl</button>
                 <button class="btn" @click="deleteVinyl(record.id)">Supprimer un vinyl</button>
             </div>
-        </div>
-    </div>
+        </div>  </div>
 </template>
 
 
@@ -48,7 +47,7 @@ export default {
     methods: {
         async deleteVinyl(recordId) {
             if (axios({
-                method: 'post',
+                method: 'delete',
                 url: API_DELETE,
                 data: {
                     id: recordId
@@ -64,6 +63,9 @@ export default {
         },
         createVinyl() {
             this.$router.push({ name: "create" })
+        },
+        updateVinyl(recordId) {
+            this.$router.push({ name: 'update', params: { recordId: recordId } })
         }
 
     }

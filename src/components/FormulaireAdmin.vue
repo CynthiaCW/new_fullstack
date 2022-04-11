@@ -1,16 +1,11 @@
 <template>
     <div>
         <form v-on:submit.prevent="submitForm">
-            <h1>Ajouter un vinyls</h1>
+            <h1>{{(!form.id)?'Ajouter un vinyl':'Modifier un vinyl'}}</h1>
+            <!--<input type="text" v-model="form.id">-->
             <div class="champs">
                 <label for="pic">Lien URL image</label>
-                <input
-                    type="text"
-                    name="picture_link"
-                    id="pic"
-                    required
-                    v-model="form.picture_link"
-                />
+                <input type="text" name="picture_link" id="pic" required v-model="form.picture_link">
             </div>
 
             <div class="champs">
@@ -23,13 +18,7 @@
             </div>
             <div class="champs">
                 <label for="year">Année</label>
-                <input
-                    type="date"
-                    id="year"
-                    name="year_release"
-                    required
-                    v-model="form.year_release"
-                />
+                <input type="date" id="year" name="year_release" required v-model="form.year_release" />
             </div>
 
             <div class="champs">
@@ -39,13 +28,7 @@
 
             <div class="champs">
                 <label for="description">Description</label>
-                <textarea
-                    name="description"
-                    id="description"
-                    cols="30"
-                    rows="10"
-                    v-model="form.description"
-                />
+                <textarea name="description" id="description" cols="30" rows="10" v-model="form.description" />
             </div>
 
             <div class="champs">
@@ -54,40 +37,69 @@
             </div>
 
             <div class="btnCentrer">
-                <button class="btn">Creer un vinyl</button>
+                <button class="btn">{{(!form.id)?'Creer un vinyl':'Modifier un vinyl'}}</button>
             </div>
-        </form>
-    </div>
+        </form>  </div>
 </template>
 
 <script>
 import axios from 'axios'
 const API_CREATE = 'http://localhost:8000/create.php'
+const API_SINGLE_READ = 'http://localhost:8000/single_read.php/?id='
+const API_UPDATE = 'http://localhost:8000/update.php'
 
 export default {
     name: 'FormulaireAdmin',
     data: () => ({
 
         form: {
+            id: '',
             picture_link: '',
             title: '',
             band: '',
-            release_year: '',
+            year_release: '',
             genre: '',
             description: '',
             available: ''
-        }
+        },
+        record: {}
     }),
     methods: {
         async submitForm() {
+            if (!this.form.id) {
                 if (await axios.post(API_CREATE, this.form)) {
-                this.$router.push({ name: 'admin' })
-                console.log(this.form)
+                    this.$router.push({ name: 'admin' })
+                    console.log('created')
+                } else {
+                    console.log('fuck')
+                }
             } else {
-                console.log('fuck')
+                if (await axios.put(API_UPDATE, this.form)) {
+                    this.$router.push({ name: 'admin' })
+                    console.log('updated')
+                } else {
+                    console.log('fuck')
+                }
             }
 
+
+
+
         }
+    },
+    async created() {
+        const { recordId } = this.$route.params
+        const apiDetailsUri = API_SINGLE_READ + recordId
+        const oneRecord = await axios.get(apiDetailsUri)
+        this.record = oneRecord.data
+        this.form.id = this.record.id
+        this.form.picture_link = this.record.picture_link
+        this.form.title = this.record.title
+        this.form.band = this.record.band
+        this.form.year_release = this.record.year_release
+        this.form.genre = this.record.genre
+        this.form.description = this.record.description
+        this.form.available = this.record.available
     }
 }
 
@@ -115,18 +127,20 @@ form {
     width: 563px;
 }
 
-form > .champs {
+form>.champs {
     display: flex;
     flex-direction: column;
     align-content: center;
     padding: 15px;
 }
+
 label {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     color: #7b6ded;
 }
+
 input {
     display: flex;
     flex-direction: column;
@@ -143,6 +157,7 @@ input {
     justify-content: center;
     padding: 15px;
 }
+
 .btn {
     background-color: #7b6ded;
     border: 0;

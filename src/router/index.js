@@ -32,6 +32,11 @@ const routes = [
     path:'/admin/create',
     name:'create',
     component:() =>import('../components/FormulaireAdmin.vue')
+  },
+  {
+    path:'/admin/update/:recordId',
+    name:'update',
+    component:()=>import('../components/FormulaireAdmin.vue')
   }
 ]
 

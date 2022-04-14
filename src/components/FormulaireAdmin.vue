@@ -31,7 +31,7 @@
                 <textarea name="description" id="description" cols="30" rows="10" v-model="form.description" />
             </div>
 
-            <div class="champs">
+            <div class="checkbox">
                 <label for="checkbox">En stock</label>
                 <input type="checkbox" name="available" v-model="form.available" />
             </div>
@@ -117,14 +117,14 @@ form {
     background-color: #fff;
     font-family: "Poppins";
     border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
 
     max-width: 100%;
     margin: 20px;
     overflow: hidden;
-    width: 563px;
+    width: 600px;
 }
 
 form>.champs {
@@ -146,10 +146,28 @@ input {
     flex-direction: column;
     flex-wrap: wrap;
     border: 1.5px solid;
-    border-radius: 6px;
-    width: 50%;
+    border-radius: 10px;
+    width: 100%;
     height: 50%;
-    border-color: #838383;
+    border-color: #7c7c7c;
+}
+
+input:focus {
+    outline: 1px solid #b3a9fa;
+}
+
+textarea {
+    border-radius: 10px;
+    border-color: #7c7c7c;
+}
+
+textarea:focus {
+    outline: 1px solid #b3a9fa;
+}
+
+.checkbox_yes {
+    display: flex;
+    justify-content: space-around;
 }
 
 .btnCentrer {
@@ -165,11 +183,13 @@ input {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     color: #fff;
     font-size: 16px;
+    font-weight: bold;
     padding: 12px 25px;
     bottom: 30px;
     right: 30px;
     letter-spacing: 1px;
 }
+
 
 .btn:hover {
     background-color: #533ef0;

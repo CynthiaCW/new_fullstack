@@ -2,6 +2,10 @@
   <div class="home">
     
     <NavBar />
+
+    <div class="banniere">
+       <img src="src/assets/static/img/mink-mingle-HRyjETL87Gg-unsplash.jpg">
+    </div>
   </div>
 </template>
 
